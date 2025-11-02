@@ -40,6 +40,11 @@ app.add_middleware(
 
 labels = ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
 
+@app.get("/")
+def home():
+    return {"message": "Waste Classifier API is running 🚀"}
+
+
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     image_data = await file.read()
