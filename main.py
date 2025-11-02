@@ -56,3 +56,8 @@ async def predict(file: UploadFile = File(...)):
         "predicted_class" : labels[traget_image_pred_label],
         "confidence" : round(traget_image_pred_prob[0][traget_image_pred_label].item(),3)
     })
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
