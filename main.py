@@ -7,6 +7,7 @@ from torchvision import transforms
 from PIL import Image
 from torch import nn
 import io
+import os
 
 loaded_weight = torchvision.models.EfficientNet_B0_Weights.DEFAULT
 loaded_model = torchvision.models.efficientnet_b0(weights = None)
@@ -16,7 +17,8 @@ loaded_model.classifier = nn.Sequential(
     nn.Linear(1280,6)
 )
 
-loaded_model.load_state_dict(torch.load("waste_classifier_model.pth", map_location="cpu"))
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "waste_classifier_model.pth")
+loaded_model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
 loaded_model.eval()
 
 to_transform = loaded_weight.transforms()
