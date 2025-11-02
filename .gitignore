@@ -1,0 +1,4 @@
+data/
+__pycache__/
+split_fun.py
+train.py
