@@ -3,3 +3,4 @@ uvicorn
 torch==2.9.0
 torchvision==0.24.0
 pillow
+python-multipart
